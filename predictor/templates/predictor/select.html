@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" style="height: 100%;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Deep Shield</title>
+    <meta name="description" content="Deep fake detector using Deep Learning">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:800">
+</head>
+
+<body style="height: 100%;background: rgb(227,223,223);">
+    <nav class="navbar navbar-light navbar-expand-md" style="background: #ffffff;">
+        <div class="container-fluid"><a class="navbar-brand" href="#" style="font-weight: bold;">Deep Shield</a><button class="navbar-toggler" data-bs-toggle="collapse"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button></div>
+    </nav>
+    <div class="container" style="margin-right: 20%;margin-left: 15%; margin-top: 5%; padding: 20px;">
+        <div class="row">
+            <div class="col">
+                <div class="card" style="width: 100%;text-align: center;border-radius: 26px;">
+                    <div class="card-body" style="width: 100%;text-align: center;padding: 25px;">
+                        <h4 class="card-title" style="padding: 10px;font-family: 'Montserrat Alternates', sans-serif;width: 75%;margin-bottom: 0px;margin-left: 150px;margin-right: 150px;margin-top: 30px;">We have collected the faces in your image. You can choose one among these.</h4>
+                        <div style="margin-top: 40px;margin-bottom: 30px;">
+                        {% for face in faces %}
+                        <a href="/results/{{face.count}}">
+                        <img src="{% static face.image %}" style="width: 250px;height: 250px;margin: 20px; border-style: solid; border-radius: 100px;">
+                        </a>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

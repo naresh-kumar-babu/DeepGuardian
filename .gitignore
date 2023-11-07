@@ -1,0 +1,10 @@
+__pycache__
+migrations
+media/*
+static/img/face*
+*.sqlite3
+bin
+lib
+share
+vir
+pyvenv.cfg
