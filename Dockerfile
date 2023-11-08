@@ -2,9 +2,9 @@ FROM python:3.8.7
 
 USER 0
 
-RUN mkdir ./cache
+RUN mkdir /.cache
 
-ENV MPLCONFIGDIR ./cache
+RUN chmod -R 777 /.cache
 
 ENV PYTHONUNBUFFERED 1
 
