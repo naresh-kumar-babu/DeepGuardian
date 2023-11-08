@@ -12,6 +12,16 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+from pwd import getpwuid
+
+__USERNAME = getpwuid(os.getuid()).pw_name
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': f'/tmp/{__USERNAME}-django/',
+    },
+}
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,12 +93,8 @@ WSGI_APPLICATION = 'DeepGuardian.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd8lgsropq74ae2',
-        'USER' : 'ihpmkndvbtzluy',	
-        'PASSWORD': 'eeabce91f6c6920c446bb7d4bc0ce7b9c7a14a58e009084b18b331abd46ea542',	
-        'HOST': 'ec2-107-21-10-179.compute-1.amazonaws.com',	
-        'PORT': '5432'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
