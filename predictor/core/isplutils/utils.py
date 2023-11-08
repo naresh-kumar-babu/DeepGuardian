@@ -11,7 +11,7 @@ Paolo Bestagini
 """
 from pprint import pprint
 from typing import Iterable, List
-
+from matplotlib import pyplot as plt
 import albumentations as A
 import cv2
 import numpy as np
@@ -109,6 +109,15 @@ def extract_bb(frame: Image.Image, bb: Iterable, scale: str, size: int) -> Image
 
     return face
 
+def showimage(img_tensor: torch.Tensor):
+    topil = transforms.Compose([
+        transforms.Normalize(mean=[0, 0, 0, ], std=[1 / 0.229, 1 / 0.224, 1 / 0.225]),
+        transforms.Normalize(mean=[-0.485, -0.456, -0.406], std=[1, 1, 1]),
+        transforms.ToPILImage()
+    ])
+    plt.figure()
+    plt.imshow(topil(img_tensor))
+    plt.show()
 
 def make_train_tag(net_class: nn.Module,
                    face_policy: str,
