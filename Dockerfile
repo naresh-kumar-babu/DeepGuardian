@@ -2,6 +2,10 @@ FROM python:3.8.7
 
 USER 0
 
+RUN mkdir ./cache
+
+ENV MPLCONFIGDIR ./cache
+
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
