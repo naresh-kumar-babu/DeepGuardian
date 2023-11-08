@@ -19,7 +19,6 @@ import scipy
 import torch
 from PIL import Image
 from albumentations.pytorch import ToTensorV2
-from matplotlib import pyplot as plt
 from torch import nn as nn
 from torchvision import transforms
 
@@ -109,17 +108,6 @@ def extract_bb(frame: Image.Image, bb: Iterable, scale: str, size: int) -> Image
         raise ValueError('Unknown scale value: {}'.format(scale))
 
     return face
-
-
-def showimage(img_tensor: torch.Tensor):
-    topil = transforms.Compose([
-        transforms.Normalize(mean=[0, 0, 0, ], std=[1 / 0.229, 1 / 0.224, 1 / 0.225]),
-        transforms.Normalize(mean=[-0.485, -0.456, -0.406], std=[1, 1, 1]),
-        transforms.ToPILImage()
-    ])
-    plt.figure()
-    plt.imshow(topil(img_tensor))
-    plt.show()
 
 
 def make_train_tag(net_class: nn.Module,
