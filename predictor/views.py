@@ -13,19 +13,23 @@ def verify(request):
         url_input = request.POST.get('url_input')
         file_input = request.FILES.get('file_input')
         if (url_input == '') and (file_input == ''):
-            return render(request, 'predictor/verify.html', {'error': 'Please choose the image in either of the two formats'})
+            return render(request, 'predictor/inspect.html', {'error': 'Please choose the image in either of the two formats'})
         else:
             if url_input:
                 im = Image.open(requests.get(url_input, stream=True).raw)
+                if im.mode == 'CMYK':
+                    im = im.convert('RGB')
                 result = pipeline.predict(image_path=im)
                 return image_chooser(request, result)
             elif file_input:
                 image = ImagePicker(image = file_input)
                 image.save()
                 im = Image.open(image.image)
+                if im.mode == 'CMYK':
+                    im = im.convert('RGB')
                 result = pipeline.predict(image_path=im)
                 return image_chooser(request, result)
-    return render(request, 'predictor/verify.html')
+    return render(request, 'predictor/inspect.html')
 
 def image_chooser(request, result):
     faces = result['faces']
