@@ -57,3 +57,6 @@ def results(request, face):
     else:
         status = 'REAL'
     return render(request, 'predictor/results.html', {'fake':fake_percentile, 'filepath':filepath, 'status': status})
+
+def about(request):
+    return render(request, 'predictor/about.html')
