@@ -36,23 +36,23 @@
                 <div class="col-md-6 col-xl-4">
                     <div class="card">
                         <div class="card-body text-center d-flex flex-column align-items-center">
-                            <div class="card">
-                                <div class="card-body" style="background: white; color: black;">
+                            <div class="card" style="width: 100%;">
+                                <div class="card-body" style="background: white; color: black; width: 100%; border-radius: 2rem;">
                                     <div style="display: flex; flex-direction: row; justify-content: space-between;">
                                         <h3>Overall Score</h3>
-                                        <h2>{{overall_score}} %
+                                        <h1>{{overall_score}} %</h1>
                                     </div>
-                                    <p>Based on the score, your image has more chances of being a {{overall_result}} one</p>
+                                    <h3>Based on the score, your image has more chances of being a {{overall_result}} one</h3>
                                 </div>
                             </div><br/>
-                            <div class="card">
-                                <div class="card-body" style="background: white; color: black;">
-                                    <h3>Face-wise analysis</h3>
+                            <div class="card" style="width: 100%;">
+                                <div class="card-body" style="background: white; color: black; width: 100%; border-radius: 2rem;">
+                                    <h2 style="font-weight: bold;">Face-wise analysis</h2>
                                     <div style="margin-top: 40px;margin-bottom: 30px; display: flex; flex-direction: row;">
                                         {% for face in faces %}
                                         <div style="background: white; padding: 1rem; display: flex; flex-direction: column;">
                                             <img src="{% static face.image %}" style="width: 250px;height: 250px;margin: 20px; border-style: solid; border-radius: 100px;">
-                                            <h6 style="color: {{face.color}}">{{face.score}}</h6>
+                                            <h5 style="color: {{face.color}}">{{face.score}}</h5>
                                         </div>
                                         {% endfor %}
                                     </div>

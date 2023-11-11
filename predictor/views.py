@@ -51,11 +51,11 @@ def image_chooser(request, result):
         img = 'img/face_{0}.jpeg'.format(c)
         count = c
         color = 'auto'
-        if scores[c] > 50.0:
+        if scores[c] > 0.50:
             color = 'red'
         else: 
             color: 'green'
-        st.append({'image':img, 'count':count, 'score': scores[c], 'color': color})
+        st.append({'image':img, 'count':count, 'score': str(scores[c] * 100) + ' %', 'color': color})
     return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status})
 
 def results(request, face):
