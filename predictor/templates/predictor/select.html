@@ -33,16 +33,16 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
-                <div class="col-md-6 col-xl-4" style="width: 100%;">
+                <div style="width: 100%;">
                     <div class="card" style="width: 100%;">
                         <div class="card-body text-center d-flex flex-column align-items-center">
                             <div class="card" style="width: 100%;">
                                 <div class="card-body" style="background: white; color: black; width: 100%; border-radius: 2rem;">
                                     <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                                        <img src="{% static "img/input_img.jpeg" %}" style="width: 53%">
+                                        <img src="{% static "img/input_img.jpeg" %}" style="width: 40%;">
                                         <div style="display: flex; flex-direction: column; justify-content: space-evenly;">
                                             <h3 style="font-weight: bold;">Overall Score</h3>
-                                            <h1>{{overall_score}} %</h1>
+                                            <h1 style="font-weight: bold;">{{overall_score}} %</h1>
                                             <h5>Based on the score, your image has more chances of being a <b>{{overall_result}}</b> one</h5>
                                         </div>
                                     </div>
