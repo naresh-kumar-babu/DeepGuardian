@@ -50,7 +50,7 @@ def image_chooser(request, result):
     for c in range(i):
         img = 'img/face_{0}.jpeg'.format(c)
         count = c
-        st.append({'image':img, 'count':count, 'score': scores[i]})
+        st.append({'image':img, 'count':count, 'score': scores[c]})
     return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status})
 
 def results(request, face):
