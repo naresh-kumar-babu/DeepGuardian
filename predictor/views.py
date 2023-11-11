@@ -4,6 +4,7 @@ from PIL import Image
 from .pipeline import loaded_pipeline as pipeline
 from math import ceil
 from .models import ImagePicker
+from statistics import mean
 
 def home(request):
     return render(request, 'predictor/index.html')
@@ -34,6 +35,13 @@ def verify(request):
 def image_chooser(request, result):
     faces = result['faces']
     scores = result['scores']
+    overall_score = mean(scores)
+    fake_percentile = int(ceil(overall_score*100))
+    status = ''
+    if fake_percentile > 50:
+        status = 'FAKE'
+    else:
+        status = 'REAL'
     i=0
     for face in faces:
         face.save('DeepGuardian/static/img/face_{0}.jpeg'.format(i))
@@ -42,8 +50,8 @@ def image_chooser(request, result):
     for c in range(i):
         img = 'img/face_{0}.jpeg'.format(c)
         count = c
-        st.append({'image':img, 'count':count})
-    return render(request, 'predictor/select.html', {'faces': st})
+        st.append({'image':img, 'count':count, 'score': scores[i]})
+    return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status})
 
 def results(request, face):
     im = Image.open('DeepGuardian/static/img/face_{0}.jpeg'.format(face))

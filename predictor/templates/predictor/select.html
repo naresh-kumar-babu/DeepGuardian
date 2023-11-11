@@ -29,21 +29,35 @@
             <div class="row mb-4 mb-lg-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
                     <p class="fw-bold text-success mb-2">Inspection Portal</p>
-                    <h2 class="fw-bold">Please select the image / video to be analyzed</h2>
+                    <h2 class="fw-bold">Inspection Report</h2>
                 </div>
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-xl-4">
                     <div class="card">
                         <div class="card-body text-center d-flex flex-column align-items-center">
-                            <h4 class="card-title" style="padding: 10px;font-family: 'Montserrat Alternates', sans-serif;">We have collected the faces in your image. You can choose one among these.</h4>
-                            <div style="margin-top: 40px;margin-bottom: 30px; display: flex; flex-direction: row;">
-                                {% for face in faces %}
-                                <a href="/results/{{face.count}}">
-                                    <img src="{% static face.image %}" style="width: 250px;height: 250px;margin: 20px; border-style: solid; border-radius: 100px;">
-                                </a>
-                                {% endfor %}
-                            </div>
+                            <div class="card">
+                                <div class="card-body" style="background: white; color: black;">
+                                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                                        <h3>Overall Score</h3>
+                                        <h2>{{overall_score}} %
+                                    </div>
+                                    <p>Based on the score, your image has more chances of being a {{overall_result}} one</p>
+                                </div>
+                            </div><br/>
+                            <div class="card">
+                                <div class="card-body" style="background: white; color: black;">
+                                    <h3>Face-wise analysis</h3>
+                                    <div style="margin-top: 40px;margin-bottom: 30px; display: flex; flex-direction: row;">
+                                        {% for face in faces %}
+                                        <div style="background: white; padding: 1rem; display: flex; flex-direction: column;">
+                                            <img src="{% static face.image %}" style="width: 250px;height: 250px;margin: 20px; border-style: solid; border-radius: 100px;">
+                                            <h6 style="color: {{face.score > 50.0 ? "red" : "green"}}">{{face.score}}</h6>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div><br/>
                         </div>
                     </div>
                 </div>
