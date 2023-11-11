@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Sign up - DeepGuardian</title>
+    <title>Inspect - DeepGuardian</title>
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
 </head>
@@ -17,9 +17,11 @@
                     </svg></span><span>DeepGuardian</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                </ul><a class="btn btn-primary shadow" role="button" href="inspect.html">Start Inspection</a>
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link" href="{% url "home" %}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url "about" %}">About</a></li>
+                    </ul>
+                    <a class="btn btn-primary shadow" role="button" href="{% url "verify" %}">Start Inspection</a>
             </div>
         </div>
     </nav>
@@ -40,6 +42,7 @@
                                 <div class="mb-3"></div><input class="form-control" type="file" name="file_input">
                                 <p class="fw-semibold" style="margin-top: 10PX;">&nbsp;OR</p>
                                 <div class="mb-3"></div><input class="form-control" type="url" name="url_input" style="margin-bottom: 25px;" placeholder="Paste the public image / video link here">
+                                <p style="margin-top: 10px;font-size: 15px; color: white;">Error: {{error}}</p><br/> 
                                 <div class="mb-3"><button class="btn btn-primary shadow d-block w-100" type="submit">Inspect !</button></div>
                             </form>
                         </div>
