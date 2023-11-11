@@ -34,7 +34,7 @@
             </div>
             <div class="row d-flex justify-content-center">
                 <div class="col-md-6 col-xl-4">
-                    <div class="card">
+                    <div class="card" style="width: 100%;">
                         <div class="card-body text-center d-flex flex-column align-items-center">
                             <div class="card" style="width: 100%;">
                                 <div class="card-body" style="background: white; color: black; width: 100%; border-radius: 2rem;">
@@ -42,11 +42,11 @@
                                         <h3>Overall Score</h3>
                                         <h1>{{overall_score}} %</h1>
                                     </div>
-                                    <h3>Based on the score, your image has more chances of being a {{overall_result}} one</h3>
+                                    <h4>Based on the score, your image has more chances of being a {{overall_result}} one</h4>
                                 </div>
                             </div><br/>
-                            <div class="card" style="width: 100%;">
-                                <div class="card-body" style="background: white; color: black; width: 100%; border-radius: 2rem;">
+                            <div class="card">
+                                <div class="card-body" style="background: white; color: black; border-radius: 2rem;">
                                     <h2 style="font-weight: bold;">Face-wise analysis</h2>
                                     <div style="margin-top: 40px;margin-bottom: 30px; display: flex; flex-direction: row;">
                                         {% for face in faces %}

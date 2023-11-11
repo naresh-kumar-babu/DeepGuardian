@@ -35,7 +35,7 @@ def verify(request):
 def image_chooser(request, result):
     faces = result['faces']
     scores = result['scores']
-    overall_score = mean(scores)
+    overall_score = mean(scores) * 100
     fake_percentile = int(ceil(overall_score*100))
     status = ''
     if fake_percentile > 50:
