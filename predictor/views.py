@@ -50,6 +50,7 @@ def image_chooser(request, result):
     for c in range(i):
         img = 'img/face_{0}.jpeg'.format(c)
         count = c
+        color = 'auto'
         if scores[c] > 50.0:
             color = 'red'
         else: 
