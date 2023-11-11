@@ -56,7 +56,7 @@ def image_chooser(request, result):
         if scores[c] > 0.50:
             color = 'red'
         else: 
-            color: 'green'
+            color = 'green'
         st.append({'image':img, 'count':count, 'score': str(scores[c] * 100) + ' %', 'color': color})
     return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status})
 
