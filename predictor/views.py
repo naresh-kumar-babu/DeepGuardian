@@ -44,7 +44,6 @@ def image_chooser(request, result):
         status = 'FAKE'
     else:
         status = 'REAL'
-    input_img = Image.open('DeepGuardian/static/img/input_img.jpeg')
     i=0
     for face in faces:
         face.save('DeepGuardian/static/img/face_{0}.jpeg'.format(i))
@@ -59,7 +58,7 @@ def image_chooser(request, result):
         else: 
             color: 'green'
         st.append({'image':img, 'count':count, 'score': str(scores[c] * 100) + ' %', 'color': color})
-    return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status, 'input_img': input_img})
+    return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status})
 
 def results(request, face):
     im = Image.open('DeepGuardian/static/img/face_{0}.jpeg'.format(face))
