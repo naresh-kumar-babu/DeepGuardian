@@ -45,6 +45,7 @@ def image_chooser(request, result):
     else:
         status = 'REAL'
     overall_score = str(overall_score)
+    print(overall_score)
     overall_score = overall_score[:overall_score.index('.')+2]
     i=0
     for face in faces:
