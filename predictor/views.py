@@ -20,12 +20,14 @@ def verify(request):
                 im = Image.open(requests.get(url_input, stream=True).raw)
                 if im.mode == 'CMYK':
                     im = im.convert('RGB')
+                im.save('predictorDeepGuardian/static/img/input_img.jpeg')
                 result = pipeline.predict(image_path=im)
                 return image_chooser(request, result)
             elif file_input:
                 image = ImagePicker(image = file_input)
                 image.save()
                 im = Image.open(image.image)
+                im.save('DeepGuardian/static/img/input_img.jpeg')
                 if im.mode == 'CMYK':
                     im = im.convert('RGB')
                 result = pipeline.predict(image_path=im)
@@ -35,13 +37,14 @@ def verify(request):
 def image_chooser(request, result):
     faces = result['faces']
     scores = result['scores']
-    overall_score = mean(scores) * 100
+    overall_score = int(ceil(mean(scores) * 100))
     fake_percentile = int(ceil(overall_score*100))
     status = ''
     if fake_percentile > 50:
         status = 'FAKE'
     else:
         status = 'REAL'
+    input_img = Image.open('DeepGuardian/static/img/input_img.jpeg')
     i=0
     for face in faces:
         face.save('DeepGuardian/static/img/face_{0}.jpeg'.format(i))
@@ -56,7 +59,7 @@ def image_chooser(request, result):
         else: 
             color: 'green'
         st.append({'image':img, 'count':count, 'score': str(scores[c] * 100) + ' %', 'color': color})
-    return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status})
+    return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status, 'input_img': input_img})
 
 def results(request, face):
     im = Image.open('DeepGuardian/static/img/face_{0}.jpeg'.format(face))

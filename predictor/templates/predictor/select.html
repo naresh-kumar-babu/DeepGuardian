@@ -39,10 +39,13 @@
                             <div class="card" style="width: 100%;">
                                 <div class="card-body" style="background: white; color: black; width: 100%; border-radius: 2rem;">
                                     <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                                        <h3>Overall Score</h3>
-                                        <h1>{{overall_score}} %</h1>
+                                        <img src={{input_img}} style="height: 100%; width: 50%">
+                                        <div style="display: flex; flex-direction: column; justify-content: space-between;">
+                                            <h3>Overall Score</h3>
+                                            <h1>{{overall_score}} %</h1>
+                                            <h4>Based on the score, your image has more chances of being a <b>{{overall_result}}</b> one</h4>
+                                        </div>
                                     </div>
-                                    <h4>Based on the score, your image has more chances of being a {{overall_result}} one</h4>
                                 </div>
                             </div><br/>
                             <div class="card">
