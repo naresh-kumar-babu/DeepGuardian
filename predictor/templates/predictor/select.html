@@ -36,8 +36,8 @@
                 <div class="col-md-6 col-xl-4">
                     <div class="card">
                         <div class="card-body text-center d-flex flex-column align-items-center">
-                            <h4 class="card-title" style="padding: 10px;font-family: 'Montserrat Alternates', sans-serif;width: 90%;margin-bottom: 0px;margin-left: 150px;margin-right: 150px;margin-top: 20px;">We have collected the faces in your image. You can choose one among these.</h4>
-                            <div style="margin-top: 40px;margin-bottom: 30px; display: flex; flex-direction: row; width: 90%;">
+                            <h4 class="card-title" style="padding: 10px;font-family: 'Montserrat Alternates', sans-serif;">We have collected the faces in your image. You can choose one among these.</h4>
+                            <div style="margin-top: 40px;margin-bottom: 30px; display: flex; flex-direction: row;">
                                 {% for face in faces %}
                                 <a href="/results/{{face.count}}">
                                     <img src="{% static face.image %}" style="width: 250px;height: 250px;margin: 20px; border-style: solid; border-radius: 100px;">
