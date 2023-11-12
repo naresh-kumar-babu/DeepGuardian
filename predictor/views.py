@@ -20,7 +20,7 @@ def verify(request):
                 im = Image.open(requests.get(url_input, stream=True).raw)
                 if im.mode == 'CMYK':
                     im = im.convert('RGB')
-                im.save('predictorDeepGuardian/static/img/input_img.jpeg')
+                im.save('DeepGuardian/static/img/input_img.jpeg')
                 result = pipeline.predict(image_path=im)
                 return image_chooser(request, result)
             elif file_input:
@@ -45,7 +45,7 @@ def image_chooser(request, result):
     else:
         status = 'REAL'
     overall_score = str(overall_score)
-    overall_score = overall_score[:overall_score.index('.')+2]
+    overall_score = overall_score[:overall_score.index('.')+3]
     i=0
     for face in faces:
         face.save('DeepGuardian/static/img/face_{0}.jpeg'.format(i))
@@ -60,7 +60,7 @@ def image_chooser(request, result):
         else: 
             color = 'green'
         face_score = str(scores[c] * 100)
-        face_score = face_score[:face_score.index('.')+2]
+        face_score = face_score[:face_score.index('.')+3]
         st.append({'image':img, 'count':count, 'score': str(face_score) + ' %', 'color': color})
     return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status})
 
