@@ -47,14 +47,11 @@ def image_chooser(request, result):
     faces = result['faces']
     scores = result['scores']
     overall_score = mean(scores) * 100
-    fake_percentile = int(ceil(overall_score*100))
-    status = ''
-    if fake_percentile > 50:
-        status = 'FAKE'
-    else:
-        status = 'REAL'
+    overall_other_score = 100.0 - overall_score
     overall_score = str(overall_score)
     overall_score = overall_score[:overall_score.index('.')+3]
+    overall_other_score = str(overall_other_score)
+    overall_other_score = overall_other_score[:overall_other_score.index('.')+3]
     i=0
     for face in faces:
         face.save('DeepGuardian/static/img/face_{0}.jpeg'.format(i))
@@ -71,7 +68,7 @@ def image_chooser(request, result):
         face_score = str(scores[c] * 100)
         face_score = face_score[:face_score.index('.')+3]
         st.append({'image':img, 'count':count, 'score': str(face_score) + ' %', 'color': color})
-    return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status})
+    return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_other_score': overall_other_score})
 
 def about(request):
     return render(request, 'predictor/about.html')

@@ -41,9 +41,25 @@
                                     <div style="display: flex; flex-direction: row; justify-content: space-between;">
                                         <img src="{% static "img/input_img.jpeg" %}" style="width: 40%;">
                                         <div style="display: flex; flex-direction: column; justify-content: space-evenly;">
-                                            <h3 style="font-weight: bold;">Overall Score</h3>
-                                            <h1 style="font-weight: bold;">{{overall_score}} %</h1>
-                                            <h5>Based on the score, your image has more chances of being a <b>{{overall_result}}</b> one</h5>
+                                            <h3 style="font-weight: bold;">Cumulative Score</h3>
+                                            <table>
+                                                <tr>
+                                                    <td width="50%">
+                                                        <h2>Actual pixel (real-image) probability</h2>
+                                                    </td>
+                                                    <td width="50%">
+                                                        <h1 style="font-weight: bold;">{{overall_score}} %</h1>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="50%">
+                                                        <h2>Generated pixel (deep-fake) probability</h2>
+                                                    </td>
+                                                    <td width="50%">
+                                                        <h1 style="font-weight: bold;">{{overall_other_score}} %</h1>
+                                                    </td>
+                                                </tr>
+                                            </table>
                                         </div>
                                     </div>
                                 </div>
