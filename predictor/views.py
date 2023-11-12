@@ -36,7 +36,6 @@ def verify(request):
             elif "video" in content_type:
                 video = VideoPicker(video = file_input)
                 video.save()
-                print(video.get_url())
                 result = pipeline.predict_video(video_path="DeepGuardian"+video.get_url())
                 return image_chooser(request, result)
             else:
@@ -50,9 +49,9 @@ def image_chooser(request, result):
     fake_percentile = int(ceil(overall_score*100))
     status = ''
     if fake_percentile > 50:
-        status = 'REAL'
-    else:
         status = 'FAKE'
+    else:
+        status = 'REAL'
     overall_score = str(overall_score)
     overall_score = overall_score[:overall_score.index('.')+3]
     i=0

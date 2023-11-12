@@ -52,6 +52,7 @@ class DeepfakeDetectorPipeline():
             'scores': pred_scores,
             'faces': detected_faces
         }
+        return D
        
     def predict_video(self, video_path, num_faces = 1):
         
