@@ -6,6 +6,7 @@ from math import ceil
 from .models import ImagePicker, VideoPicker
 from statistics import mean
 import os
+from datetime import datetime
 
 def home(request):
     return render(request, 'predictor/index.html')
@@ -68,7 +69,7 @@ def inspectionReport(request, result):
         face_score = str(scores[c] * 100)
         face_score = face_score[:face_score.index('.')+3]
         st.append({'image':img, 'count':count, 'score': str(face_score) + ' %', 'color': color})
-    return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_other_score': overall_other_score})
+    return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_other_score': overall_other_score, 'date': datetime.now()})
 
 def about(request):
     return render(request, 'predictor/about.html')
