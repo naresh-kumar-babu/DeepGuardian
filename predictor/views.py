@@ -56,9 +56,9 @@ def image_chooser(request, result):
         count = c
         color = 'auto'
         if scores[c] > 0.50:
-            color = 'green'
-        else: 
             color = 'red'
+        else: 
+            color = 'green'
         face_score = str(scores[c] * 100)
         face_score = face_score[:face_score.index('.')+3]
         st.append({'image':img, 'count':count, 'score': str(face_score) + ' %', 'color': color})
