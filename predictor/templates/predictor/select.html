@@ -8,17 +8,13 @@
     <title>DeepGuardian - Select</title>
     <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;display=swap">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 
 <body>
     <script type="text/javascript">
-        const { jsPDF } = window.jspdf;
         function downloadPDF(){
-            var pdfObj = new jsPDF({
-                orientation: 'landscape'
-            });
-            pdfObj.save((new Date()).toLocaleString() + '.pdf');
+            html2pdf.from(document.body).save((new Date()).toLocaleString() + '.pdf');
         }
     </script>
     <nav class="navbar navbar-expand-md sticky-top py-3 navbar-dark" id="mainNav">
