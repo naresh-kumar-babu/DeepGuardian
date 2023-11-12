@@ -37,13 +37,13 @@ def verify(request):
 def image_chooser(request, result):
     faces = result['faces']
     scores = result['scores']
-    overall_score = (1 - mean(scores)) * 100
+    overall_score = mean(scores) * 100
     fake_percentile = int(ceil(overall_score*100))
     status = ''
     if fake_percentile > 50:
-        status = 'FAKE'
-    else:
         status = 'REAL'
+    else:
+        status = 'FAKE'
     overall_score = str(overall_score)
     overall_score = overall_score[:overall_score.index('.')+3]
     i=0
@@ -56,10 +56,10 @@ def image_chooser(request, result):
         count = c
         color = 'auto'
         if scores[c] > 0.50:
-            color = 'red'
-        else: 
             color = 'green'
-        face_score = str((1 - scores[c]) * 100)
+        else: 
+            color = 'red'
+        face_score = str(scores[c] * 100)
         face_score = face_score[:face_score.index('.')+3]
         st.append({'image':img, 'count':count, 'score': str(face_score) + ' %', 'color': color})
     return render(request, 'predictor/select.html', {'faces': st, 'overall_score': overall_score, 'overall_result': status})
