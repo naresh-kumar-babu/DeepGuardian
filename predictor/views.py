@@ -3,26 +3,44 @@ import requests
 from PIL import Image
 from .pipeline import loaded_pipeline as pipeline
 from math import ceil
-from .models import ImagePicker
+from .models import ImagePicker, VideoPicker
 from statistics import mean
+import os
 
 def home(request):
     return render(request, 'predictor/index.html')
 
 def verify(request):
+    for file in os.listdir('DeepGuardian/static/img/'):
+        if file.startswith('face_'):
+            os.remove('DeepGuardian/static/img/'+file)
+    for file in os.listdir('DeepGuardian/media/'):
+        os.remove('DeepGuardian/media/'+file)
+    if os.path.exists('DeepGuardian/static/img/input_img.jpeg'):
+        os.remove('DeepGuardian/static/img/input_img.jpeg')
     if request.method == 'POST':
         file_input = request.FILES.get('file_input')
         if file_input == '':
-            return render(request, 'predictor/inspect.html', {'error': 'Please choose the image before proceeding'})
+            return render(request, 'predictor/inspect.html', {'error': 'Please choose the image/video before proceeding'})
         else:
-            image = ImagePicker(image = file_input)
-            image.save()
-            im = Image.open(image.image)
-            im.save('DeepGuardian/static/img/input_img.jpeg')
-            if im.mode == 'CMYK':
-                im = im.convert('RGB')
-            result = pipeline.predict(image_path=im)
-            return image_chooser(request, result)
+            content_type = file_input.content_type
+            if "image" in content_type:
+                image = ImagePicker(image = file_input)
+                image.save()
+                im = Image.open(image.image)
+                im.save('DeepGuardian/static/img/input_img.jpeg')
+                if im.mode == 'CMYK':
+                    im = im.convert('RGB')
+                result = pipeline.predict(image_path=im)
+                return image_chooser(request, result)
+            elif "video" in content_type:
+                video = VideoPicker(video = file_input)
+                video.save()
+                print(video.get_url())
+                result = pipeline.predict_video(video_path="DeepGuardian"+video.get_url())
+                return image_chooser(request, result)
+            else:
+                return render(request, 'predictor/inspect.html', {'error': 'Please choose the image/video file'})
     return render(request, 'predictor/inspect.html')
 
 def image_chooser(request, result):

@@ -1,8 +1,7 @@
 import torch
 from PIL import Image
-
 import torchvision.transforms as transforms
-from .blazeface import FaceExtractor, BlazeFace
+from .blazeface import FaceExtractor, BlazeFace, VideoReader
 from .architectures import fornet,weights
 from .isplutils import utils
 
@@ -48,6 +47,35 @@ class DeepfakeDetectorPipeline():
 
             pred_scores.append(pred)
             detected_faces.append(Image.fromarray(im_face_np))
+
+        D = {
+            'scores': pred_scores,
+            'faces': detected_faces
+        }
+       
+    def predict_video(self, video_path, num_faces = 1):
+        
+        frames,_ = VideoReader().read_random_frames(path= video_path, num_frames= 30)
+
+        im = Image.fromarray(frames[0])
+        im.save('DeepGuardian/static/img/input_img.jpeg')
+
+        pred_scores = []
+        detected_faces = []
+        
+        for frame in frames:
+
+            im_faces_all = self.face_extractor.process_image(img=frame)
+
+            for i in range(len(im_faces_all['faces'])):
+
+                im_face_np = im_faces_all['faces'][i]
+                
+                face_tensor = self.transforms(image=im_face_np)['image'].unsqueeze(0) 
+                pred = self.predict_from_image_tensor(image_tensor = face_tensor)
+
+                pred_scores.append(pred)
+                detected_faces.append(Image.fromarray(im_face_np))
 
         D = {
             'scores': pred_scores,
