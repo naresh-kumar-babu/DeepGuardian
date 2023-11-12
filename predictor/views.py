@@ -14,8 +14,9 @@ def verify(request):
     for file in os.listdir('DeepGuardian/static/img/'):
         if file.startswith('face_'):
             os.remove('DeepGuardian/static/img/'+file)
-    for file in os.listdir('DeepGuardian/media/'):
-        os.remove('DeepGuardian/media/'+file)
+    if os.path.exists('DeepGuardian/media/'):
+        for file in os.listdir('DeepGuardian/media/'):
+            os.remove('DeepGuardian/media/'+file)
     if os.path.exists('DeepGuardian/static/img/input_img.jpeg'):
         os.remove('DeepGuardian/static/img/input_img.jpeg')
     if request.method == 'POST':
