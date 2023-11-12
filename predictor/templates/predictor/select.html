@@ -12,11 +12,11 @@
 
 <body>
     <script type="text/javascript">
-        function downloadPDF(date){
+        function downloadPDF(){
             var pdfObj = new jsPDF({
                 orientation: 'landscape'
             });
-            pdfObj.save(date + '.pdf');
+            pdfObj.save((new Date()).toLocaleString() + '.pdf');
         }
     </script>
     <nav class="navbar navbar-expand-md sticky-top py-3 navbar-dark" id="mainNav">
@@ -39,7 +39,7 @@
                     <p class="fw-bold text-success mb-2">Inspection Portal</p>
                     <h2 class="fw-bold">Inspection Report</h2>
                     <p class="fw-bold text-success mb-2">Generated at {{date}}</p><br/>
-                    <div style="color: white; text-decoration: underline;" onclick="new jsPDF({orientation:'landscape'}).save({{date}} + '.pdf')">Download Report</div>
+                    <div style="color: white; text-decoration: underline; cursor: pointer;" onclick="downloadPDF()">Download Report</div>
                 </div>
             </div>
             <div class="row d-flex">
