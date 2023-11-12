@@ -10,7 +10,7 @@ import os
 def home(request):
     return render(request, 'predictor/index.html')
 
-def verify(request):
+def inspect(request):
     for file in os.listdir('DeepGuardian/static/img/'):
         if file.startswith('face_'):
             os.remove('DeepGuardian/static/img/'+file)
@@ -33,17 +33,17 @@ def verify(request):
                 if im.mode == 'CMYK':
                     im = im.convert('RGB')
                 result = pipeline.predict(image_path=im)
-                return image_chooser(request, result)
+                return inspectionReport(request, result)
             elif "video" in content_type:
                 video = VideoPicker(video = file_input)
                 video.save()
                 result = pipeline.predict_video(video_path="DeepGuardian"+video.get_url())
-                return image_chooser(request, result)
+                return inspectionReport(request, result)
             else:
                 return render(request, 'predictor/inspect.html', {'error': 'Please choose the image/video file'})
     return render(request, 'predictor/inspect.html')
 
-def image_chooser(request, result):
+def inspectionReport(request, result):
     faces = result['faces']
     scores = result['scores']
     overall_score = mean(scores) * 100
