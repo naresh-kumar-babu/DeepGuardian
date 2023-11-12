@@ -20,7 +20,7 @@
                     <li class="nav-item"><a class="nav-link" href="{% url "home" %}">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url "about" %}">About</a></li>
                 </ul>
-                <a class="btn btn-primary shadow" role="button" href="{% url "verify" %}">Start Inspection</a>
+                <a class="btn btn-primary shadow" role="button" href="{% url "inspect" %}">Start Inspection</a>
             </div>
         </div>
     </nav>
@@ -39,8 +39,6 @@
                             <form method="post"  enctype="multipart/form-data">
                                 {% csrf_token %}
                                 <div class="mb-3"></div><input class="form-control" type="file" name="file_input">
-                                <p class="fw-semibold" style="margin-top: 10PX;">&nbsp;OR</p>
-                                <div class="mb-3"></div><input class="form-control" type="url" name="url_input" style="margin-bottom: 25px;" placeholder="Paste the public image / video link here">
                                 <p style="margin-top: 10px;font-size: 15px; color: white; font-weight: bold;">{{error}}</p><br/> 
                                 <div class="mb-3"><button class="btn btn-primary shadow d-block w-100" type="submit">Inspect !</button></div>
                             </form>
