@@ -12,7 +12,7 @@
 
 <body>
     <script type="text/javascript">
-        const { jsPDF } = require("jspdf");
+        const { jsPDF } = window.jspdf;
         function downloadPDF(){
             var pdfObj = new jsPDF({
                 orientation: 'landscape'
