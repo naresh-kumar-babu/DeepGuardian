@@ -52,7 +52,7 @@
                                 <div class="card-body" style="background: white; color: black; border-radius: 2rem;">
                                     <br/>
                                     <h2 style="font-weight: bold;">Face-wise analysis</h2>
-                                    <div style="margin-top: 40px;margin-bottom: 30px; display: flex; flex-direction: row;">
+                                    <div style="margin-top: 40px;margin-bottom: 30px; display: flex; flex-direction: row; flex-wrap: wrap;">
                                         {% for face in faces %}
                                         <div style="background: white; padding: 1rem; display: flex; flex-direction: column;">
                                             <img src="{% static face.image %}" style="width: 225px;height: 225px;margin: 20px; border-style: solid; border-radius: 100px;">
