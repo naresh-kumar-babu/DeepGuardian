@@ -15,7 +15,7 @@
     <script type="text/javascript">
         function downloadPDF(){
             const html2pdf = window.html2pdf;
-            html2pdf.from(document.body).save((new Date()).toLocaleString() + '.pdf');
+            html2pdf().from(document.body).save((new Date()).toLocaleString() + '.pdf');
         }
     </script>
     <nav class="navbar navbar-expand-md sticky-top py-3 navbar-dark" id="mainNav">
