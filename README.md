@@ -5,10 +5,10 @@
 [![CodeQL](https://github.com/TechieNK/DeepGuardian/actions/workflows/codeql.yml/badge.svg)](https://github.com/TechieNK/DeepGuardian/actions/workflows/codeql.yml)  
   
 ----
-## Motivation  
+## 🤔  Motivation  
 Deepfakes pose a significant risk because they use advanced artificial intelligence to create highly convincing forged videos and audio recordings that are often indistinguishable from genuine content. These tampered with media can be used maliciously to disseminate false information, manipulate public opinion, and deceive individuals. Political instability, reputational harm, and a loss of trust in digital media are all possible outcomes. As deepfake technology advances, the challenges of detecting and mitigating these deceptive creations become more complex, raising concerns about the possibility of widespread misinformation and its impact on various aspects of society such as politics, business, and personal relationships. To address the risks posed by deepfakes, a combination of technological advancements, regulatory measures, and increased public awareness is required.  
 
-## Installation Instructions  
+## ⚙️  Installation Instructions  
 1) **Openshift (Recommended)**
      
    i) Copy the repository URL ([https://github.com/TechieNK/DeepGuardian](https://github.com/TechieNK/DeepGuardian))  
@@ -45,10 +45,10 @@ Deepfakes pose a significant risk because they use advanced artificial intellige
       docker run deepguardian:main
    ```
 
-## License  
+## 🗎  License  
   This application is applied with [GNU General Public License v3](https://github.com/TechieNK/DeepGuardian/blob/main/LICENSE) and is compliant with Open Source Initiative (OSI)
 
-## Tech Stack  
+## 💻  Tech Stack  
 - django (Python)
 - PyTorch
 - OpenCV
@@ -58,7 +58,7 @@ Deepfakes pose a significant risk because they use advanced artificial intellige
 - HTML, CSS, JavaScript
 ----
 
-## Screenshots (Demo)  
+## ▶️  Screenshots (Demo)  
 <img width="1707" alt="image" src="https://github.com/TechieNK/DeepGuardian/assets/42594454/f1659854-4b3b-4b00-a866-39b7ef1ab234">  
 <img width="1707" alt="image" src="https://github.com/TechieNK/DeepGuardian/assets/42594454/35501275-07eb-4849-907b-f2fa8de8dc43">
 <img width="1707" alt="image" src="https://github.com/TechieNK/DeepGuardian/assets/42594454/01fe3693-a80b-47c3-96ce-23036bc5cf1c">  
