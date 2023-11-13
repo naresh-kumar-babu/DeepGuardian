@@ -16,10 +16,11 @@ Deepfakes pose a significant risk because they use advanced artificial intellige
    iii) Select "Import from Git" from the various options displayed.  
    iv) Paste the repository URL and set the resource type as "Deployment"  
    v) Check the "Add pipeline" checkbox for ease of use in case of keeping up with latest code changes (Optional)  
-   vi) Hit the "Create" button and wait until the pipeline execution is completed.  
-   vii) The application will be served over the deployment route generated in the console.  
+   vi) Set target port to 8080  
+   vii) Hit the "Create" button and wait until the pipeline execution is completed.  
+   viii) The application will be served over the deployment route generated in the console.  
 
-2) **Docker**
+3) **Docker**
      
    i) Clone the repository
       ```
@@ -34,7 +35,7 @@ Deepfakes pose a significant risk because they use advanced artificial intellige
         docker run imagename
      ```
 
-3) **GitHub Container Registry Image** (No scope of customization)
+4) **GitHub Container Registry Image** (No scope of customization)
 
    i) Pull the image from GitHub container registry (GHCR)
    ```
