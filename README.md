@@ -56,3 +56,13 @@ Deepfakes pose a significant risk because they use advanced artificial intellige
 - Openshift Sandbox (Deployment and manual testing)
 - Bootstrap
 - HTML, CSS, JavaScript
+----
+
+## Screenshots (Demo)  
+<img width="1707" alt="image" src="https://github.com/TechieNK/DeepGuardian/assets/42594454/f1659854-4b3b-4b00-a866-39b7ef1ab234">  
+<img width="1707" alt="image" src="https://github.com/TechieNK/DeepGuardian/assets/42594454/35501275-07eb-4849-907b-f2fa8de8dc43">
+<img width="1707" alt="image" src="https://github.com/TechieNK/DeepGuardian/assets/42594454/01fe3693-a80b-47c3-96ce-23036bc5cf1c">  
+<img width="1707" alt="image" src="https://github.com/TechieNK/DeepGuardian/assets/42594454/9dcb6cde-e636-46c3-af2d-661574cd87c3">
+
+
+
