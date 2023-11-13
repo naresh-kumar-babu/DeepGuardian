@@ -38,7 +38,7 @@
                         <div class="card-body text-center d-flex flex-column align-items-center">
                             <form method="post"  enctype="multipart/form-data">
                                 {% csrf_token %}
-                                <div class="mb-3"></div><input class="form-control" type="file" name="file_input">
+                                <div class="mb-3"></div><input class="form-control" type="file" name="file_input" accept="image/png, image/gif, image/jpeg, image/webp, video/mp4, video/avi, video/mkv, video/wmv" required>
                                 <p style="margin-top: 10px;font-size: 15px; color: white; font-weight: bold;">{{error}}</p><br/> 
                                 <div class="mb-3"><button class="btn btn-primary shadow d-block w-100" type="submit">Inspect !</button></div>
                             </form>
