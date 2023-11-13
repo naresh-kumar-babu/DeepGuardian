@@ -6,6 +6,8 @@ RUN mkdir /.cache
 
 RUN chmod -R 777 /.cache
 
+RUN chmod -R 777 /
+
 ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
