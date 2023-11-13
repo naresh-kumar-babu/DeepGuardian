@@ -18,4 +18,4 @@ RUN pip install -r requirements.txt
 
 COPY . /app
 
-CMD python manage.py makemigrations && python manage.py makemigrations predictor && python manage.py migrate && python manage.py migrate predictor && python manage.py runserver 0.0.0.0:8080
+CMD python manage.py makemigrations && python manage.py makemigrations predictor && python manage.py migrate && python manage.py migrate predictor && python manage.py runsslserver 0.0.0.0:443
