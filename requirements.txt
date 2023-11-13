@@ -5,7 +5,7 @@ chardet==4.0.0
 cycler==0.10.0
 decorator==4.4.2
 Django==3.2.4
-django-sslserver
+django-extensions
 efficientnet-pytorch==0.7.1
 gunicorn==20.1.0
 idna==2.10
@@ -16,6 +16,7 @@ networkx==2.5.1
 numpy==1.21.0
 opencv-python-headless
 Pillow
+pyOpenSSL
 pyparsing==2.4.7
 python-dateutil==2.8.1
 pytz==2021.1
@@ -32,4 +33,5 @@ torch==1.9.0+cpu
 torchvision==0.10.0+cpu
 typing-extensions==3.10.0.0
 urllib3
+Werkzeug
 whitenoise==5.2.0
